@@ -44,8 +44,9 @@
 
 .displayName{
     display: flex;
+    border-bottom-width: thick;
     align-items: center;
-    padding: 5px 10px;
+    padding: 5px 10px 30px;
     box-sizing: border-box;
     cursor: pointer;
 }
@@ -69,6 +70,15 @@
 
 .messageStyle{
     background: skyblue;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin: 5px;
+    display: inline-block;
+}
+
+.messageStyle2{
+    background: greenyellow;
     display: inline-block;
     padding: 5px 10px;
     border-radius: 10px;
