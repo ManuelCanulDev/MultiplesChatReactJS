@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import './estilosChatIndividual.css';
-import { auth, dbFirestore } from "../services/firebase";
+import { dbFirestore } from "../services/firebase";
 
 const User = (props) => {
 
@@ -10,7 +10,7 @@ const User = (props) => {
     return (
         <div onClick={() => onClick(user)} className="displayName" >
             <div className="displayPic">
-                      <img src="https://pbs.twimg.com/media/EarDuOHXsAA5Ca_.png" alt="" />
+                      <img src={user.picture} alt="" />
                   </div>
             <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between', margin: '0 10px' }}>
                 <span style={{ fontWeight: 500 }}>{user.firstName} <br></br> Ultima vez: {new Date(user.lastView).toLocaleDateString("en-US")}</span>
@@ -36,8 +36,10 @@ const ChatSolo = () => {
 
     const [myUserUid, setMyUserUid] = useState(null);
 
+    // eslint-disable-next-line
     let unsus;
 
+    // eslint-disable-next-line
     let unsusCon;
 
     useEffect(() => {
@@ -72,6 +74,7 @@ const ChatSolo = () => {
 
     }, []);
 
+    // eslint-disable-next-line
     useEffect(() => {
         return () => {
             unsus.then(f => f()).catch((error) => console.log(error));
