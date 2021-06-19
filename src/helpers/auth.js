@@ -17,6 +17,7 @@ export function signup(email, password) {
           createdAt: new Date(),
           isOnline: true,
           lastView: new Date(),
+          asignado: false,
           picture: 'https://pbs.twimg.com/media/EarDuOHXsAA5Ca_.png'
         })
         .then(() => {
@@ -27,6 +28,7 @@ export function signup(email, password) {
             lastView: new Date()
           }
           localStorage.setItem('user', JSON.stringify(loggedInUser));
+          window.location.reload();
           console.log('ORIGIN: REGISTRO => User logged in successfully...!');
         })
         .catch(error => {
@@ -55,6 +57,7 @@ export function signin(email, password) {
         }
 
         localStorage.setItem('user', JSON.stringify(loggedInUser));
+        window.location.reload();
         //console.log('ORIGIN: LOGIN => User logged in successfully...!');
       })
       .catch(error => {
@@ -81,6 +84,7 @@ export function signInWithGoogle() {
           createdAt: new Date(),
           isOnline: true,
           lastView: new Date(),
+          asignado: false,
           picture: data.additionalUserInfo.profile.picture
         })
         .then(() => {
@@ -114,6 +118,7 @@ export function signInWithGoogle() {
         }
 
         localStorage.setItem('user', JSON.stringify(loggedInUser));
+        window.location.reload();
         //console.log('ORIGIN: LOGIN => User logged in successfully...!');
       })
       .catch(error => {
@@ -138,6 +143,7 @@ export function signInWithGitHub() {
           createdAt: new Date(),
           isOnline: true,
           lastView: new Date(),
+          asignado: false,
           picture: data.additionalUserInfo.profile.avatar_url
         })
         .then(() => {
@@ -171,6 +177,7 @@ export function signInWithGitHub() {
         }
 
         localStorage.setItem('user', JSON.stringify(loggedInUser));
+        window.location.reload();
         //console.log('ORIGIN: LOGIN => User logged in successfully...!');
       })
       .catch(error => {
@@ -195,6 +202,7 @@ export function signInWithFacebook() {
           createdAt: new Date(),
           isOnline: true,
           lastView: new Date(),
+          asignado: false,
           picture: data.additionalUserInfo.profile.picture.data.url
         })
         .then(() => {

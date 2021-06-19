@@ -111,6 +111,7 @@ class App extends Component {
               authenticated={this.state.authenticated}
               component={ChatSolo}
             />
+           
           </Switch>
         </Router>
       );

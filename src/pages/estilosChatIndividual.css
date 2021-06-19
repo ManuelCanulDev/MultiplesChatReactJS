@@ -38,6 +38,7 @@
 .chatControls textarea{
     width: 90%;
 }
+
 .chatControls button{
     width: 10%;
 }
@@ -67,6 +68,14 @@
     height: 100%;
     object-fit: cover;
 }
+
+.vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
 
 .messageStyle{
     background: skyblue;

@@ -71,7 +71,7 @@ export default class Chat extends Component {
     return (
       <div>
         <Header />
-
+      <br></br>
         <div className="chat-area" ref={this.myRef}>
           {/* loading indicator */}
           {this.state.loadingChats ? <div className="spinner-border text-success" role="status">

@@ -4,7 +4,7 @@ import './estilosChatIndividual.css';
 import { dbFirestore } from "../services/firebase";
 
 const User = (props) => {
-
+    var userActual = JSON.parse(localStorage.getItem('user'));
     const { user, onClick } = props;
 
     return (
@@ -13,7 +13,7 @@ const User = (props) => {
                       <img src={user.picture} alt="" />
                   </div>
             <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between', margin: '0 10px' }}>
-                <span style={{ fontWeight: 500 }}>{user.firstName} <br></br> Ultima vez: {new Date(user.lastView).toLocaleDateString("en-US")}</span>
+                <span style={{ fontWeight: 500 }}>{ userActual.uid === "S95f1tgrDpRSNzOUUZPAzcAtUG43" ? 'UID: ' + user.uid : user.firstName} <br></br> Ultima vez: {new Date(user.lastView).toLocaleDateString("en-US")}</span>
             </div>
         </div>
     );
@@ -50,11 +50,17 @@ const ChatSolo = () => {
                     .onSnapshot((querySnapShot) => {
                         const users = [];
                         querySnapShot.forEach(function (doc) {
-                            if (doc.data().uid !== uid) {
-                                users.push(doc.data());
+                            if(userActual.uid === "S95f1tgrDpRSNzOUUZPAzcAtUG43"){
+                                if (doc.data().uid !== uid && doc.data().asignado) {
+                                    users.push(doc.data());
+                                }
+                            }else{
+                                if (doc.data().uid !== uid) {
+                                    users.push(doc.data());
+                                }
                             }
                         });
-                        console.log(users);
+                        //console.log(users);
                         setCurrentListUsers(users);
                     });
 
@@ -83,7 +89,13 @@ const ChatSolo = () => {
 
     const initChat = (user) => {
         setChatStarted(true);
-        setChatUser(`${user.firstName}`);
+
+        if(userActual.uid === "S95f1tgrDpRSNzOUUZPAzcAtUG43"){
+            setChatUser(`${user.uid}`);
+        }else{
+            setChatUser(`${user.firstName}`);
+        }
+        
         setUserUid(user.uid);
 
         var actualUser = JSON.parse(localStorage.getItem('user'));
@@ -96,7 +108,7 @@ const ChatSolo = () => {
             console.log(error);
         });
 
-        console.log(user);
+        //console.log(user);
     }
 
     const fetchRealTimeConversation = async (user) => {
@@ -115,7 +127,7 @@ const ChatSolo = () => {
                             conversations.push(doc.data())
                         }
                     });
-                    console.log(conversations);
+                    //console.log(conversations);
                     setListConversations(conversations);
                 });
 
@@ -145,7 +157,7 @@ const ChatSolo = () => {
                 .catch(error => {
                     console.log(error)
                 });
-            console.log(msjObj);
+            //console.log(msjObj);
         }
 
         setMessage("");
@@ -153,7 +165,7 @@ const ChatSolo = () => {
 
     const something=(event)=> {
         if (event.keyCode === 13) {
-            console.log('enter');
+            //console.log('enter');
             submitMessage();
             setMessage("");
         }
@@ -164,20 +176,27 @@ const ChatSolo = () => {
             <Header />
             <br></br>
             <br></br>
+            {
+                userActual.uid !== "S95f1tgrDpRSNzOUUZPAzcAtUG43" ?
+                <br></br>
+                : null
+            }
             <section className="contenedorDeChat">
 
                 <div className="listOfUsers">
                     <br></br>
                     {
                         listUsers.length > 0 ?
-                            listUsers.map(user => {
-                                return (
-                                    <User
-                                        onClick={initChat}
-                                        key={user.uid}
-                                        user={user} />
-                                );
-                            }) : null
+                        
+                        listUsers.map(user => {
+                            return (
+                                <User
+                                    onClick={initChat}
+                                    key={user.uid}
+                                    user={user} />
+                            );
+                        })
+                        : null
                     }
                 </div>
                 <div className="chatArea">
