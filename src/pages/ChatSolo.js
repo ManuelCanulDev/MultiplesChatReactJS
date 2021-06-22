@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
-import Footer from "../components/Footer";
 import '../estilosSolo.css';
 import { dbFirestore } from "../services/firebase";
 
@@ -96,11 +95,11 @@ const ChatSolo = () => {
 
     }, []);
 
-    // eslint-disable-next-line
     useEffect(() => {
         return () => {
             unsus.then(f => f()).catch((error) => console.log(error));
         }
+        // eslint-disable-next-line
     }, []);
 
     const initChat = (user) => {
