@@ -22,13 +22,20 @@ function Header() {
                 :
                 <div>
                 <Link className="nav-item nav-link mr-3" to="/chat-individual">Salas Individuales</Link>
-                <Link className="nav-item nav-link mr-3" to="/chat-grupal">Sala de Platica</Link>
+                </div>
+              }
+              {
+                userActual.uid === 'S95f1tgrDpRSNzOUUZPAzcAtUG43' ?
+                null
+                :
+                <div>
+                <Link className="nav-item nav-link" to="/chat-grupal">Sala de Platica</Link>
                 </div>
               }
               <button className="btn btn-primary mr-3" onClick={() => auth().signOut()}>Cerrar Sesión</button>
             </div>
             : <div className="navbar-nav">
-              <Link className="navbar-brand" to="/">Inicio</Link>
+              <Link className="nav-item nav-link mr-3" to="/">Inicio</Link>
               <Link className="nav-item nav-link mr-3" to="/nosotros">Nosotros</Link>
               <Link className="nav-item nav-link mr-3" to="/galeria">Galeria</Link>
               <Link className="nav-item nav-link mr-3" to="/soporte">Soporte</Link>

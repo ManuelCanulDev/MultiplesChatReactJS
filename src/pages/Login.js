@@ -1,8 +1,7 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { dbFirestore } from "../services/firebase";
 import { signin, signInWithGoogle, signInWithGitHub, signInWithFacebook } from "../helpers/auth";
 
 export default class Login extends Component {
@@ -126,13 +125,6 @@ export default class Login extends Component {
                 Olvidaste tu contraseña? <Link to="/recovery">Recuperala</Link>
               </p>
             </form>
-          </div>
-          <div className="col-md-4">
-            <br></br>
-            <br></br>
-            <br></br>
-            <h1>Usuario del Sistema:</h1>
-            
           </div>
         </div>
         <Footer></Footer>

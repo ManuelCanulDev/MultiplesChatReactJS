@@ -13,7 +13,10 @@ import Login from "./pages/Login";
 import Blogs from "./pages/Blogs";
 import {Recovery} from "./pages/Recovery";
 import { auth } from "./services/firebase";
-import './styles.css';
+import ChatSoporte from "./pages/ChatSoporte";
+import Nosotros from "./pages/Nosotros";
+import Galeria from "./pages/Galeria";
+import Soporte from "./pages/Soporte";
 
 function PrivateRoute({ component: Component, authenticated, ...rest }) {
   return (
@@ -97,9 +100,19 @@ class App extends Component {
               component={Login}
             />
             <PublicRoute
-              path="/blogs"
+              path="/nosotros"
               authenticated={this.state.authenticated}
-              component={Blogs}
+              component={Nosotros}
+            />
+            <PublicRoute
+              path="/galeria"
+              authenticated={this.state.authenticated}
+              component={Galeria}
+            />
+            <PublicRoute
+              path="/soporte"
+              authenticated={this.state.authenticated}
+              component={Soporte}
             />
             <PublicRoute
               path="/recovery"
@@ -111,7 +124,6 @@ class App extends Component {
               authenticated={this.state.authenticated}
               component={ChatSolo}
             />
-           
           </Switch>
         </Router>
       );
